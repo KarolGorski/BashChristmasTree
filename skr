@@ -1,0 +1,43 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+BROWN='\033[0;33m'
+ARRAY=('\033[0;31m' '\033[0;35m' '\033[0;36m' '\033[1;33m')
+
+clear
+
+function rysuj(){	
+	
+	for (( i=0; i<10; i++))
+	    do
+		for (( k=0; k<10-i; k++ ))
+		do
+			echo -n " "
+		done
+
+
+		for (( k=0;k< ((i*2)+1) ;k++ ))
+		do
+			color=${ARRAY[$(( ( RANDOM % 4 )))]}
+			tmp=$(( ( RANDOM % 5 )))
+			if [ "$tmp" -eq "4" ] ; then
+				echo -ne "${color}o"
+			else
+				echo -ne "${GREEN}*"
+			fi
+		done
+		echo ""
+	    done
+	
+	for (( i=0; i<2; i++))
+	do
+		echo -ne "${BROWN}       ******\n"
+	done
+}
+
+while [ true ]; do
+clear
+    rysuj
+    sleep 1
+done
